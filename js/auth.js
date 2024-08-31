@@ -37,7 +37,7 @@ const handleRegistration = (event) => {
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
             console.log(info);
             document.getElementById('registration_button').innerText='Loding...';
-            fetch("http://127.0.0.1:8000/users/register/", {
+            fetch("https://ross-valley.onrender.com/users/register/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(info),
@@ -68,7 +68,7 @@ const handleRegistration = (event) => {
 //     const password = getValue("password");
 //     console.log(username, password);
 //     if ((username, password)) {
-//         fetch("http://127.0.0.1:8000/users/login/", {
+//         fetch("https://ross-valley.onrender.com/users/login/", {
 //             method: "POST",
 //             headers: { "content-type": "application/json" },
 //             body: JSON.stringify({ username, password }),
@@ -108,7 +108,7 @@ const handleLogin = (event) => {
     console.log(username, password);
     
     if (username && password) {
-        fetch("http://127.0.0.1:8000/users/login/", {
+        fetch("https://ross-valley.onrender.com/users/login/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),
@@ -122,7 +122,7 @@ const handleLogin = (event) => {
                 localStorage.setItem("user_id", data.user_id);
 
                 // Fetch user details to get account_type
-                fetch(`http://127.0.0.1:8000/users/list/${data.user_id}/`, {
+                fetch(`https://ross-valley.onrender.com/users/list/${data.user_id}/`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -160,7 +160,7 @@ const handlelogOut = () => {
     const token = localStorage.getItem("token");
     console.log(token)
 
-    fetch("http://127.0.0.1:8000/users/logout/", {
+    fetch("https://ross-valley.onrender.com/users/logout/", {
         method: "POST",
         headers: {
             Authorization: `Token ${token}`,

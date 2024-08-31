@@ -1,6 +1,6 @@
 
 const loadCategory = (category) => {
-    fetch(`http://127.0.0.1:8000/categories/`)
+    fetch(`https://ross-valley.onrender.com/categories/`)
       .then((res) => res.json())
       .then((data) => {
         data.forEach((item) => {
@@ -26,7 +26,7 @@ const addProduct = (event) => {
     formData.append('product_description', document.getElementById("product_description").value);
     formData.append('category', document.getElementById("select_category").value);
   
-    fetch('http://127.0.0.1:8000/product/', {
+    fetch('https://ross-valley.onrender.com/product/', {
       method: "POST",
       body: formData,
     })
@@ -51,7 +51,7 @@ const addProduct = (event) => {
     const param = new URLSearchParams(window.location.search).get("Id");
 
     // Fetch product data based on the Id
-    fetch(`http://127.0.0.1:8000/product/${param}`)
+    fetch(`https://ross-valley.onrender.com/product/${param}`)
         .then((res) => res.json())
         .then((data) => {
             // Populate the form fields with the fetched data
@@ -81,7 +81,7 @@ const addProduct = (event) => {
     formData.append('product_description', document.getElementById("edit_product_description").value);
     formData.append('category', document.getElementById("select_category").value);
   
-    fetch(`http://127.0.0.1:8000/product/${param}/`, {
+    fetch(`https://ross-valley.onrender.com/product/${param}/`, {
       method: "PATCH",
       body: formData,
     })
@@ -112,7 +112,7 @@ const addProduct = (event) => {
             category_slug:slug,
 
             };
-            fetch('http://127.0.0.1:8000/categories/',{
+            fetch('https://ross-valley.onrender.com/categories/',{
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify(info),
@@ -124,7 +124,7 @@ const addProduct = (event) => {
                 });
  };
 const allorders=()=>{
-    fetch(`http://127.0.0.1:8000/orders/`)
+    fetch(`https://ross-valley.onrender.com/orders/`)
     .then((res)=>res.json())
     .then((data)=> { 
         // console.log(data);
@@ -134,7 +134,7 @@ const allorders=()=>{
 const displayAllOrders = (orders) => {
     let i = 1;
     orders.forEach(order => {
-        fetch(`http://127.0.0.1:8000/product/${order.product}/`)
+        fetch(`https://ross-valley.onrender.com/product/${order.product}/`)
         .then((res) => res.json())
         .then((value) => {
             const parent = document.getElementById("order_data");
@@ -164,7 +164,7 @@ const Orderdetails = () => {
     if (param) {
         console.log("Parameter 'Id' found: ", param);
 
-        fetch(`http://127.0.0.1:8000/orders/${param}`)
+        fetch(`https://ross-valley.onrender.com/orders/${param}`)
         .then((res) => res.json())
         .then((data) => {
             console.log("Order Data: ", data);
@@ -173,7 +173,7 @@ const Orderdetails = () => {
             document.getElementById("billing_phone").innerText = data.phone;
             document.getElementById("billing_email").innerText = data.email;
 
-            fetch(`http://127.0.0.1:8000/product/${data.product}/`)
+            fetch(`https://ross-valley.onrender.com/product/${data.product}/`)
             .then((res) => res.json())
             .then((value) => {
                 document.getElementById("billing_product_name").innerText = value.product_name;
@@ -204,7 +204,7 @@ const changeStatus=(event)=>{
     };
     console.log(info);
     
-    fetch(`http://127.0.0.1:8000/orders/${param}/`,{
+    fetch(`https://ross-valley.onrender.com/orders/${param}/`,{
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(info),
@@ -217,7 +217,7 @@ const changeStatus=(event)=>{
   };
 function loadAllProducts() {
 
-    fetch(`http://127.0.0.1:8000/product/`)
+    fetch(`https://ross-valley.onrender.com/product/`)
         .then((res) => res.json())
         .then((data) =>{
             displayAllProduct(data);
@@ -227,7 +227,7 @@ function loadAllProducts() {
 const displayAllProduct = (products) => {
     let i = 1;
     products.forEach(product => {
-        fetch(`http://127.0.0.1:8000/categories/${product.category}/`)
+        fetch(`https://ross-valley.onrender.com/categories/${product.category}/`)
         .then((res) => res.json())
         .then((data) => {
             const parent = document.getElementById("productData");
@@ -256,7 +256,7 @@ const displayAllProduct = (products) => {
 loadAllProducts();
 function loadAllCategories() {
 
-    fetch(`http://127.0.0.1:8000/categories/`)
+    fetch(`https://ross-valley.onrender.com/categories/`)
         .then((res) => res.json())
         .then((data) =>{
             displayAllCategory(data);
@@ -289,7 +289,7 @@ const displayAllCategory = (cagories) => {
 loadAllCategories();
 
 const editCategory = (id) => {
-  fetch(`http://127.0.0.1:8000/categories/${id}/`)
+  fetch(`https://ross-valley.onrender.com/categories/${id}/`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -308,7 +308,7 @@ document.getElementById('update_category').addEventListener('click', () => {
   const updateSlug = updatedCategory.toLowerCase().replace(/\s+/g, '-');
 
 
-  fetch(`http://127.0.0.1:8000/categories/${id}/`, {
+  fetch(`https://ross-valley.onrender.com/categories/${id}/`, {
       method: 'PATCH',
       headers: {
           'Content-Type': 'application/json',

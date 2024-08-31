@@ -2,7 +2,7 @@
 
 function allProducts() {
 
-    fetch(`http://127.0.0.1:8000/product/`)
+    fetch(`https://ross-valley.onrender.com/product/`)
         .then((res) => res.json())
         .then((data) => displayProductData(data))
         .catch((err) => console.log(err));
@@ -51,7 +51,7 @@ const displayProductData = (products) => {
 function singleProducts() {
     const param = new URLSearchParams(window.location.search).get("Id");
 
-    fetch(`http://127.0.0.1:8000/product/${param}/`)
+    fetch(`https://ross-valley.onrender.com/product/${param}/`)
         .then((res) => res.json())
         .then((data) => {
               
@@ -82,7 +82,7 @@ function singleProducts() {
 //============Reviews==============//
 function reviewsForProduct() {
     const param = new URLSearchParams(window.location.search).get("Id");
-    fetch(`http://127.0.0.1:8000/reviews/?product=${param}`)
+    fetch(`https://ross-valley.onrender.com/reviews/?product=${param}`)
     .then((res) => res.json())
     .then((data) => {
         const reviewsContainer = document.getElementById("reviews_area");
@@ -128,7 +128,7 @@ const takeReview=(event)=>{
         };
         console.log(info);
         
-        fetch(`http://127.0.0.1:8000/reviews/?product=${param}`,{
+        fetch(`https://ross-valley.onrender.com/reviews/?product=${param}`,{
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(info),
@@ -165,7 +165,7 @@ const confirmOrder=()=>{
     };
     
     // console.log(info);
-    fetch("http://127.0.0.1:8000/orders/", {
+    fetch("https://ross-valley.onrender.com/orders/", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(info),
@@ -181,7 +181,7 @@ const confirmOrder=()=>{
   function CheckoutProductInfo() {
     const param = new URLSearchParams(window.location.search).get("Id");
 
-    fetch(`http://127.0.0.1:8000/product/${param}/`)
+    fetch(`https://ross-valley.onrender.com/product/${param}/`)
         .then((res) => res.json())
         .then((data) => {
             const name = data.product_name; 

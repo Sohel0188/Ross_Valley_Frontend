@@ -1,7 +1,7 @@
 const loadUserDetails=()=>{
     const user_id = localStorage.getItem("user_id");
     console.log(user_id);
-    fetch(`http://127.0.0.1:8000/users/list/${user_id}/`)
+    fetch(`https://ross-valley.onrender.com/users/list/${user_id}/`)
     .then((res)=>res.json())
     .then((data)=>{
         document.getElementById("user_image").src=data.image;
@@ -11,7 +11,7 @@ const loadUserDetails=()=>{
 }
 const orderHistory = () => {
     const user_id = localStorage.getItem("user_id");
-    fetch(`http://127.0.0.1:8000/orders/?customer_id=${user_id}`)
+    fetch(`https://ross-valley.onrender.com/orders/?customer_id=${user_id}`)
         .then((res) => res.json())
         .then((data) => displayAllProducts(data));
 };
@@ -21,7 +21,7 @@ const displayAllProducts = (orders) => {
     const parent = document.getElementById("order_history");
 
     orders.forEach(order => {
-        fetch(`http://127.0.0.1:8000/product/${order.product}/`)
+        fetch(`https://ross-valley.onrender.com/product/${order.product}/`)
             .then((res) => res.json())
             .then((product) => {
                 console.log("Product Info: ", product);

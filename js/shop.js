@@ -1,6 +1,6 @@
 function allProducts(){
     
-    fetch(`http://127.0.0.1:8000/product/`)
+    fetch(`https://ross-valley.onrender.com/product/`)
     .then((res) => res.json())
     .then((data)=> displayProductData(data))
     .catch((err)=> console.log(err));
@@ -44,7 +44,7 @@ const displayProductData = (products) => {
 
  // .................category.....................//
 function allCategory(){
-    fetch("http://127.0.0.1:8000/categories/")
+    fetch("https://ross-valley.onrender.com/categories/")
     .then((res) => res.json())
     .then((data)=> displayAllCategory(data))
     .then((data)=> console.log(data))
@@ -70,7 +70,7 @@ function allCategory(){
   
 function filterProducts(catId){
   console.log(catId);
-  fetch(`http://127.0.0.1:8000/product/?category_id=${catId}`)
+  fetch(`https://ross-valley.onrender.com/product/?category_id=${catId}`)
   .then((res) => res.json())
   .then((data)=> displayProductData(data))
   .then((data)=> console.log(data))
